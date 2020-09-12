@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import './App.css';
 
-import MainAppbar from './components/MainAppbar';
-import Content from './components/Content';
+import Main from './views/Main';
+import usePhrases from './hooks/usePhrases';
 
 const darkTheme = createMuiTheme({
   palette: {
@@ -73,10 +73,22 @@ function App() {
     else setTheme(darkTheme);
   }
 
+  const { phrases, setLanguage, language } = usePhrases();
+
+  const handleChangeLanguage = (lang) => {
+    setLanguage(lang);
+  };
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Content theme={theme.palette.type} changeTheme={toggleTheme} />
+        <Main
+          theme={theme.palette.type}
+          changeTheme={toggleTheme}
+          phrases={phrases}
+          language={language}
+          changeLanguage={handleChangeLanguage}
+        />
       </ThemeProvider>
     </div>
   );

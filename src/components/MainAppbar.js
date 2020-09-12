@@ -12,17 +12,13 @@ import {
     ListItemIcon,
     ListItemText,
     FormControl,
-    InputLabel,
     Select,
     MenuItem
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import LanguageIcon from '@material-ui/icons/Language';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import usePhrases from '../hooks/usePhrases';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,19 +43,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function MainAppbar({ changeTheme, theme }) {
+export default function MainAppbar({ changeTheme, theme, phrases, language, changeLanguage }) {
     const classes = useStyles();
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const { phrases, setLanguage, language } = usePhrases();
 
     const toggleDrawer = () => {
         setDrawerOpen(!drawerOpen);
     };
 
     const handleChangeLanguage = (event) => {
-        const value = event.target.value;
-        setLanguage(value);
-    };
+        const lang = event.target.value;
+        changeLanguage(lang);
+    }
 
     const list = () => (
         <div
