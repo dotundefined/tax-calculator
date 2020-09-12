@@ -17,6 +17,7 @@ import {
     MenuItem
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import LanguageIcon from '@material-ui/icons/Language';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
