@@ -6,7 +6,7 @@ const usePhrases = (lang = 'bh') => {
 
     useEffect(() => {
         setLanguage(lang);
-    }, []);
+    }, [lang]);
 
     useEffect(() => {
         refreshPhrases(language);
@@ -16,10 +16,12 @@ const usePhrases = (lang = 'bh') => {
         switch (_lang) {
             default:
             case 'bh': setPhrases({
-                taxCalculator: 'Kalkulator Poreza'
+                taxCalculator: 'Kalkulator Poreza',
+                calculate: 'izracunaj',
             }); break;
             case 'en': setPhrases({
-                taxCalculator: 'Tax Calculator'
+                taxCalculator: 'Tax Calculator',
+                calculate: 'calculate',
             }); break;
         }
     }
