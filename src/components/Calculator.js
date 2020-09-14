@@ -16,7 +16,7 @@ import {
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import useTaxCalculator from '../hooks/useTaxCalculator';
+import useTaxCalculator from 'hooks/useTaxCalculator';
 
 
 const useStyles = makeStyles((theme) => ({
