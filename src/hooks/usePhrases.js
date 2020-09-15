@@ -17,11 +17,29 @@ const usePhrases = (lang = 'bh') => {
             default:
             case 'bh': setPhrases({
                 taxCalculator: 'Kalkulator Poreza',
-                calculate: 'izracunaj',
+                calculate: 'Izracunaj',
+                gross: 'Bruto',
+                grossAmount: 'Bruto Iznos',
+                grossAmountDescription: 'Ukupan iznos dohotka na koji se placa porez.',
+                cantonalZZO: 'Doprinos za Kantonalni ZZO',
+                federalZZO: 'Doprionos za Federalni ZZO',
+                incomeTax: 'Porez na dohodak',
+                total: 'Ukupno',
+                totalAmount: 'Ukupan iznos',
+                totalAmountDescription: 'Ukupan iznos za uplatu',
             }); break;
             case 'en': setPhrases({
                 taxCalculator: 'Tax Calculator',
-                calculate: 'calculate',
+                calculate: 'Calculate',
+                gross: 'Gross',
+                grossAmount: 'Gross Amount',
+                grossAmountDescription: 'The total amount of taxable income.',
+                cantonalZZO: 'Contribution to the Cantonal Health Insurance Fund',
+                federalZZO: 'Contribution to the Federal Health Insurance Fund',
+                incomeTax: 'Income tax',
+                total: 'Total',
+                totalAmount: 'Total amount',
+                totalAmountDescription: 'Total amount to pay',
             }); break;
         }
     }

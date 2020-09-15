@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
-        flexBasis: '33.33%',
+        flexBasis: '66.6%',
         flexShrink: 0,
     },
     secondaryHeading: {
@@ -94,7 +94,7 @@ const Calculator = ({ phrases }) => {
         <>
             <div className={classes.brutoForm}>
                 <FormControl fullWidth className={classes.brutoFormControl} variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-amount">Bruto</InputLabel>
+                    <InputLabel htmlFor="outlined-adornment-amount">{phrases.gross}</InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-amount"
                         value={brutoValue}
@@ -116,15 +116,15 @@ const Calculator = ({ phrases }) => {
                             <HtmlTooltip
                                 title={
                                     <React.Fragment>
-                                        <Typography color="inherit">Bruto iznos</Typography>
-                                        <p>Ukupan iznos dohotka.</p>
+                                        <Typography color="inherit">{phrases.grossAmount}</Typography>
+                                        <p>{phrases.grossAmountDescription}</p>
                                     </React.Fragment>
                                 }
                             >
                                 <HelpOutlineIcon />
                             </HtmlTooltip>}
                     >
-                        <Typography className={classes.heading}>Bruto Iznos:</Typography>
+                        <Typography className={classes.heading}>{phrases.grossAmount}:</Typography>
                         <Typography className={classes.secondaryHeading}>{taxCalculations.bruto ? taxCalculations.bruto : 0} KM</Typography>
                     </AccordionSummary>
                 </Accordion>
@@ -134,13 +134,13 @@ const Calculator = ({ phrases }) => {
                         aria-controls="panel4bh-content"
                         id="panel4bh-header"
                     >
-                        <Typography className={classes.heading}>ZZO TK</Typography>
+                        <Typography className={classes.heading}>{phrases.cantonalZZO}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.zzotk ? (taxCalculations.zzotk).toFixed(2) : 0.00} KM
+                            {taxCalculations.cantonalZZO ? (taxCalculations.cantonalZZO).toFixed(2) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        
+
                     </AccordionDetails>
                 </Accordion>
                 <Accordion expanded={expanded === 'fond'} onChange={handleChange('fond')}>
@@ -149,13 +149,13 @@ const Calculator = ({ phrases }) => {
                         aria-controls="panel4bh-content"
                         id="panel4bh-header"
                     >
-                        <Typography className={classes.heading}>Fond Solidarnosti</Typography>
+                        <Typography className={classes.heading}>{phrases.federalZZO}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.fond ? (taxCalculations.total).toFixed(2) : 0.00} KM
+                            {taxCalculations.federalZZO ? (taxCalculations.federalZZO).toFixed(2) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        
+
                     </AccordionDetails>
                 </Accordion>
                 <Accordion expanded={expanded === 'budget'} onChange={handleChange('budget')}>
@@ -164,13 +164,13 @@ const Calculator = ({ phrases }) => {
                         aria-controls="panel4bh-content"
                         id="panel4bh-header"
                     >
-                        <Typography className={classes.heading}>Budzet</Typography>
+                        <Typography className={classes.heading}>{phrases.incomeTax}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.budgetTax ? (taxCalculations.budgetTax).toFixed(2) : 0.00} KM
+                            {taxCalculations.incomeTax ? (taxCalculations.incomeTax).toFixed(2) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        
+
                     </AccordionDetails>
                 </Accordion>
                 <Accordion expanded={false} onChange={() => false}>
@@ -182,15 +182,15 @@ const Calculator = ({ phrases }) => {
                             <HtmlTooltip
                                 title={
                                     <React.Fragment>
-                                        <Typography color="inherit">Ukupno</Typography>
-                                        <p>Ukupan iznos za uplatu.</p>
+                                        <Typography color="inherit">{phrases.totalAmount}</Typography>
+                                        <p>{phrases.totalAmountDescription}</p>
                                     </React.Fragment>
                                 }
                             >
                                 <HelpOutlineIcon />
                             </HtmlTooltip>}
                     >
-                        <Typography className={classes.heading}>Ukupno:</Typography>
+                        <Typography className={classes.heading}>{phrases.total}:</Typography>
                         <Typography className={classes.secondaryHeading}>{taxCalculations.total ? (taxCalculations.total).toFixed(2) : 0.00} KM</Typography>
                     </AccordionSummary>
                 </Accordion>
