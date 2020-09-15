@@ -14,22 +14,22 @@ const useTaxCalculator = () => {
         return _base * 0.04;
     }
 
-    const calculateFond = (_healthcare) => {
+    const calculateFederalZZO = (_healthcare) => {
         // Formula za fond solidarnosti je: ZDRAVSTVO * 10.2%
         return _healthcare * 0.102;
     }
 
-    const calculateZZOTK = (_healthcare) => {
+    const calculateCantonalZZO = (_healthcare) => {
         // Formula za ZZO TK je: ZDRAVSTVO * 89.8%
         return _healthcare * 0.898;
     }
 
-    const calculateBudgetBase = (_base, _healthcare) => {
+    const calculateIncomeTaxBase = (_base, _healthcare) => {
         // Formula za ZZO TK je: ZDRAVSTVO * 89.8%
         return _base - _healthcare;
     }
 
-    const calculateBudgetTax = (_budgetBase) => {
+    const calculateIncomeTax = (_budgetBase) => {
         // Formula za ZZO TK je: ZDRAVSTVO * 10.2%
         return _budgetBase * 0.1;
     }
@@ -42,19 +42,19 @@ const useTaxCalculator = () => {
         const bruto = brutoValue;
         const base = calculateBaseValue(bruto);
         const healthcare = calculateHealtcare(base);
-        const zzotk = calculateZZOTK(healthcare);
-        const fond = calculateFond(healthcare);
-        const budgetBase = calculateBudgetBase(base, healthcare);
-        const budgetTax = calculateBudgetTax(budgetBase);
-        const total = calculateTotal(zzotk, fond, budgetTax);
+        const cantonalZZO = calculateCantonalZZO(healthcare);
+        const federalZZO = calculateFederalZZO(healthcare);
+        const incomeTaxBase = calculateIncomeTaxBase(base, healthcare);
+        const incomeTax = calculateIncomeTax(incomeTaxBase);
+        const total = calculateTotal(cantonalZZO, federalZZO, incomeTax);
         setTaxCalculations({
             bruto,
             base,
             healthcare,
-            zzotk,
-            fond,
-            budgetBase,
-            budgetTax,
+            cantonalZZO,
+            federalZZO,
+            incomeTaxBase,
+            incomeTax,
             total
         });
     }
