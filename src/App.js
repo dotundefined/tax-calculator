@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import './App.css';
+import 'App.css';
 
-import Main from './views/Main';
-import usePhrases from './hooks/usePhrases';
+import Main from 'views/Main';
+import usePhrases from 'hooks/usePhrases';
 
 const darkTheme = createMuiTheme({
   palette: {
