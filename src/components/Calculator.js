@@ -102,6 +102,7 @@ const Calculator = ({ phrases }) => {
                         onFocus={handleFocus}
                         endAdornment={<InputAdornment position="end">KM</InputAdornment>}
                         labelWidth={40}
+                        type="number"
                     />
                 </FormControl>
                 <Button onClick={calculateTaxes} className={classes.calculateBtn} size="large" variant="contained" color="primary">{phrases.calculate}!</Button>
