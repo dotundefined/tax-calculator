@@ -27,6 +27,9 @@ const usePhrases = (lang = 'bh') => {
                 total: 'Ukupno',
                 totalAmount: 'Ukupan iznos',
                 totalAmountDescription: 'Ukupan iznos za uplatu',
+                // NAVIGATION
+                calculator: 'Kalkulator',
+                blog: 'Blog',
             }); break;
             case 'en': setPhrases({
                 taxCalculator: 'Tax Calculator',
@@ -40,6 +43,9 @@ const usePhrases = (lang = 'bh') => {
                 total: 'Total',
                 totalAmount: 'Total amount',
                 totalAmountDescription: 'Total amount to pay',
+                // NAVIGATION
+                calculator: 'Calculator',
+                blog: 'Blog',
             }); break;
         }
     }
