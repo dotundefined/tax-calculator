@@ -17,8 +17,10 @@ import {
 } from '@material-ui/core';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+import MenuIcon from '@material-ui/icons/Menu';
+import AnnouncementIcon from '@material-ui/icons/Announcement';
+import KeyboardIcon from '@material-ui/icons/Keyboard';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainAppbar({ changeTheme, theme, phrases, language, changeLanguage }) {
     const classes = useStyles();
+
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     const toggleDrawer = () => {
@@ -64,22 +67,16 @@ export default function MainAppbar({ changeTheme, theme, phrases, language, chan
             onKeyDown={toggleDrawer}
         >
             <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
+                <ListItem button key={phrases.calculator}>
+                    <ListItemIcon><KeyboardIcon /></ListItemIcon>
+                    <ListItemText primary={phrases.calculator} />
+                </ListItem>
+                <ListItem button key={phrases.blog}>
+                    <ListItemIcon><AnnouncementIcon /></ListItemIcon>
+                    <ListItemText primary={phrases.blog} />
+                </ListItem>
             </List>
             <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -87,9 +84,9 @@ export default function MainAppbar({ changeTheme, theme, phrases, language, chan
         <div className={classes.root}>
             <AppBar className={classes.appbar} position="static">
                 <Toolbar>
-                    {/* <IconButton onClick={toggleDrawer} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton onClick={toggleDrawer} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
-                    </IconButton> */}
+                    </IconButton>
                     <Typography variant="button" align="left" className={classes.title}>
                         {phrases.taxCalculator}
                     </Typography>
