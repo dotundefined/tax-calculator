@@ -84,6 +84,9 @@ const Calculator = ({ phrases }) => {
         calculateTaxes,
         taxCalculations } = useTaxCalculator();
 
+    const numberWithCommas = (x) => x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+            
+
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
@@ -125,7 +128,7 @@ const Calculator = ({ phrases }) => {
                             </HtmlTooltip>}
                     >
                         <Typography className={classes.heading}>{phrases.grossAmount}:</Typography>
-                        <Typography className={classes.secondaryHeading}>{taxCalculations.bruto ? taxCalculations.bruto : 0} KM</Typography>
+                        <Typography className={classes.secondaryHeading}>{taxCalculations.bruto ? numberWithCommas(taxCalculations.bruto) : 0} KM</Typography>
                     </AccordionSummary>
                 </Accordion>
                 <Accordion expanded={expanded === 'zzotk'} onChange={handleChange('zzotk')}>
@@ -136,7 +139,7 @@ const Calculator = ({ phrases }) => {
                     >
                         <Typography className={classes.heading}>{phrases.cantonalZZO}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.cantonalZZO ? (taxCalculations.cantonalZZO).toFixed(2) : 0.00} KM
+                            {taxCalculations.cantonalZZO ? numberWithCommas((taxCalculations.cantonalZZO).toFixed(2)) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -151,7 +154,7 @@ const Calculator = ({ phrases }) => {
                     >
                         <Typography className={classes.heading}>{phrases.federalZZO}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.federalZZO ? (taxCalculations.federalZZO).toFixed(2) : 0.00} KM
+                            {taxCalculations.federalZZO ? numberWithCommas((taxCalculations.federalZZO).toFixed(2)) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -166,7 +169,7 @@ const Calculator = ({ phrases }) => {
                     >
                         <Typography className={classes.heading}>{phrases.incomeTax}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.incomeTax ? (taxCalculations.incomeTax).toFixed(2) : 0.00} KM
+                            {taxCalculations.incomeTax ? numberWithCommas((taxCalculations.incomeTax).toFixed(2)) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -191,7 +194,7 @@ const Calculator = ({ phrases }) => {
                             </HtmlTooltip>}
                     >
                         <Typography className={classes.heading}>{phrases.total}:</Typography>
-                        <Typography className={classes.secondaryHeading}>{taxCalculations.total ? (taxCalculations.total).toFixed(2) : 0.00} KM</Typography>
+                        <Typography className={classes.secondaryHeading}>{taxCalculations.total ? numberWithCommas((taxCalculations.total).toFixed(2)) : 0.00} KM</Typography>
                     </AccordionSummary>
                 </Accordion>
             </div>
