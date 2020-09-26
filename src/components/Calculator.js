@@ -94,7 +94,7 @@ const Calculator = ({ phrases }) => {
         const keyCode = event.keyCode || event.which;
         const keyValue = String.fromCharCode(keyCode);
         console.log('callled ', keyValue)
-        if (!/\d/.test(keyValue))
+        if (!/(\d|.)/.test(keyValue))
           event.preventDefault();
       }
 
