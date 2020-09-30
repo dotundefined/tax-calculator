@@ -17,7 +17,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import useTaxCalculator from 'hooks/useTaxCalculator';
-
+import { useNumberFormat } from "hooks/useNumberFormat";
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -84,6 +84,9 @@ const Calculator = ({ phrases }) => {
         calculateTaxes,
         taxCalculations } = useTaxCalculator();
 
+    const { formatNumberOutput } = useNumberFormat();
+            
+
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
@@ -125,7 +128,7 @@ const Calculator = ({ phrases }) => {
                             </HtmlTooltip>}
                     >
                         <Typography className={classes.heading}>{phrases.grossAmount}:</Typography>
-                        <Typography className={classes.secondaryHeading}>{taxCalculations.bruto ? taxCalculations.bruto : 0} KM</Typography>
+                        <Typography className={classes.secondaryHeading}>{taxCalculations.bruto ? formatNumberOutput(taxCalculations.bruto) : 0} KM</Typography>
                     </AccordionSummary>
                 </Accordion>
                 <Accordion expanded={expanded === 'zzotk'} onChange={handleChange('zzotk')}>
@@ -136,7 +139,7 @@ const Calculator = ({ phrases }) => {
                     >
                         <Typography className={classes.heading}>{phrases.cantonalZZO}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.cantonalZZO ? (taxCalculations.cantonalZZO).toFixed(2) : 0.00} KM
+                            {taxCalculations.cantonalZZO ? formatNumberOutput((taxCalculations.cantonalZZO).toFixed(2)) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -151,7 +154,7 @@ const Calculator = ({ phrases }) => {
                     >
                         <Typography className={classes.heading}>{phrases.federalZZO}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.federalZZO ? (taxCalculations.federalZZO).toFixed(2) : 0.00} KM
+                            {taxCalculations.federalZZO ? formatNumberOutput((taxCalculations.federalZZO).toFixed(2)) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -166,7 +169,7 @@ const Calculator = ({ phrases }) => {
                     >
                         <Typography className={classes.heading}>{phrases.incomeTax}:</Typography>
                         <Typography className={classes.secondaryHeading}>
-                            {taxCalculations.incomeTax ? (taxCalculations.incomeTax).toFixed(2) : 0.00} KM
+                            {taxCalculations.incomeTax ? formatNumberOutput((taxCalculations.incomeTax).toFixed(2)) : 0.00} KM
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -191,7 +194,7 @@ const Calculator = ({ phrases }) => {
                             </HtmlTooltip>}
                     >
                         <Typography className={classes.heading}>{phrases.total}:</Typography>
-                        <Typography className={classes.secondaryHeading}>{taxCalculations.total ? (taxCalculations.total).toFixed(2) : 0.00} KM</Typography>
+                        <Typography className={classes.secondaryHeading}>{taxCalculations.total ? formatNumberOutput((taxCalculations.total).toFixed(2)) : 0.00} KM</Typography>
                     </AccordionSummary>
                 </Accordion>
             </div>
