@@ -93,6 +93,14 @@ const Calculator = ({ phrases }) => {
 
     const handleFocus = (event) => event.target.select();
 
+    const onKeyPress = event => {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        console.log('callled ', keyValue)
+        if (!/(\d|.)/.test(keyValue))
+          event.preventDefault();
+      }
+
     return (
         <>
             <div className={classes.brutoForm}>
@@ -103,8 +111,10 @@ const Calculator = ({ phrases }) => {
                         value={brutoValue}
                         onChange={onBrutoChange}
                         onFocus={handleFocus}
+                        onKeyPress={onKeyPress}
                         endAdornment={<InputAdornment position="end">KM</InputAdornment>}
                         labelWidth={40}
+                        type="number"
                     />
                 </FormControl>
                 <Button onClick={calculateTaxes} className={classes.calculateBtn} size="large" variant="contained" color="primary">{phrases.calculate}!</Button>
