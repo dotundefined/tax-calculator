@@ -29,6 +29,8 @@ import HomeIcon from '@material-ui/icons/Home';
 
 import { ROUTES } from '../constants';
 
+import logo from '../assets/logo.png';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -50,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
     languageSelect: {
         marginRight: theme.spacing(2),
     },
+    toolbar: theme.mixins.toolbar,
+    logo: {
+        height: theme.spacing(6),
+    }
 }));
 
 export default function MainAppbar({ changeTheme, theme, phrases, language, changeLanguage }) {
@@ -67,29 +73,33 @@ export default function MainAppbar({ changeTheme, theme, phrases, language, chan
     }
 
     const list = () => (
-        <div
-            className={classes.list}
-            role="presentation"
-            onClick={toggleDrawer}
-            onKeyDown={toggleDrawer}
-        >
-            <List>
-                <ListItem component={Link} to={ROUTES.CALCULATOR} button key={phrases.calculator}>
-                    <ListItemIcon><HomeIcon /></ListItemIcon>
-                    <ListItemText primary={phrases.home} />
-                </ListItem>
-                <Divider />
-                <ListItem component={Link} to={ROUTES.CALCULATOR} button key={phrases.calculator}>
-                    <ListItemIcon><KeyboardIcon /></ListItemIcon>
-                    <ListItemText primary={phrases.calculator} />
-                </ListItem>
-                <ListItem component={Link} to={ROUTES.BLOG} button key={phrases.blog}>
-                    <ListItemIcon><AnnouncementIcon /></ListItemIcon>
-                    <ListItemText primary={phrases.blog} />
-                </ListItem>
-            </List>
+        <>
+            <div className={classes.toolbar} />
             <Divider />
-        </div>
+            <div
+                className={classes.list}
+                role="presentation"
+                onClick={toggleDrawer}
+                onKeyDown={toggleDrawer}
+            >
+                <List disablePadding>
+                    <ListItem component={Link} to={ROUTES.HOME} button key={phrases.calculator}>
+                        <ListItemIcon><HomeIcon /></ListItemIcon>
+                        <ListItemText primary={phrases.home} />
+                    </ListItem>
+                    <Divider />
+                    <ListItem component={Link} to={ROUTES.CALCULATOR} button key={phrases.calculator}>
+                        <ListItemIcon><KeyboardIcon /></ListItemIcon>
+                        <ListItemText primary={phrases.calculator} />
+                    </ListItem>
+                    <ListItem component={Link} to={ROUTES.BLOG} button key={phrases.blog}>
+                        <ListItemIcon><AnnouncementIcon /></ListItemIcon>
+                        <ListItemText primary={phrases.blog} />
+                    </ListItem>
+                </List>
+                <Divider />
+            </div>
+        </>
     );
 
     return (
@@ -99,8 +109,8 @@ export default function MainAppbar({ changeTheme, theme, phrases, language, chan
                     <IconButton onClick={toggleDrawer} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="button" align="left" className={classes.title}>
-                        {phrases.taxCalculator}
+                    <Typography variant="button" component={Link} to={ROUTES.HOME} align="left" className={classes.title}>
+                        <img className={classes.logo} src={logo} alt="da fuq" />
                     </Typography>
                     <FormControl variant="outlined" margin="dense" className={classes.languageSelect}>
                         <Select

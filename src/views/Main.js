@@ -59,7 +59,7 @@ const Main = ({ changeTheme, theme, phrases, language, changeLanguage }) => {
                             <Blog />
                         </Route>
 
-                        <Route path={ROUTES.CALCULATOR}>
+                        <Route path={ROUTES.HOME}>
                             <Calculator
                                 phrases={phrases}
                             />
