@@ -85,7 +85,7 @@ const Calculator = ({ phrases }) => {
         taxCalculations } = useTaxCalculator();
 
     const { formatNumberOutput } = useNumberFormat();
-            
+
 
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
@@ -93,9 +93,14 @@ const Calculator = ({ phrases }) => {
 
     const handleFocus = (event) => event.target.select();
 
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        calculateTaxes();
+    }
+
     return (
         <>
-            <div className={classes.brutoForm}>
+            <form className={classes.brutoForm} onSubmit={onFormSubmit}>
                 <FormControl fullWidth className={classes.brutoFormControl} variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-amount">{phrases.gross}</InputLabel>
                     <OutlinedInput
@@ -108,7 +113,7 @@ const Calculator = ({ phrases }) => {
                     />
                 </FormControl>
                 <Button onClick={calculateTaxes} className={classes.calculateBtn} size="large" variant="contained" color="primary">{phrases.calculate}!</Button>
-            </div>
+            </form>
             <div className={classes.root}>
                 <Accordion expanded={false} onChange={() => false}>
                     <AccordionSummary
