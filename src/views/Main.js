@@ -6,6 +6,14 @@ import {
 } from '@material-ui/core';
 import MainAppbar from 'components/MainAppbar';
 import Calculator from 'components/Calculator';
+import Blog from './Blog';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+
+import { ROUTES } from '../constants';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,28 +32,43 @@ const useStyles = makeStyles((theme) => ({
 /**
  * Main container for all of the components.
  */
-const Content = ({ changeTheme, theme, phrases, language, changeLanguage }) => {
+const Main = ({ changeTheme, theme, phrases, language, changeLanguage }) => {
     const classes = useStyles();
 
     return (
-        <Grid container className={classes.main}>
-            <Grid item xs={12}>
-                <MainAppbar
-                    theme={theme}
-                    changeTheme={changeTheme}
-                    phrases={phrases}
-                    language={language}
-                    changeLanguage={changeLanguage} />
-            </Grid>
+        <Router>
+            <Grid container className={classes.main}>
+                <Grid item xs={12}>
+                    <MainAppbar
+                        theme={theme}
+                        changeTheme={changeTheme}
+                        phrases={phrases}
+                        language={language}
+                        changeLanguage={changeLanguage} />
+                </Grid>
 
-            <Grid className={classes.content} item xs={12}>
-                <Calculator
-                    phrases={phrases}
-                    theme={theme}
-                />
+                <Grid className={classes.content} item xs={12}>
+                    <Switch>
+                        <Route path={ROUTES.CALCULATOR}>
+                            <Calculator
+                                phrases={phrases}
+                            />
+                        </Route>
+
+                        <Route path={ROUTES.BLOG}>
+                            <Blog />
+                        </Route>
+
+                        <Route path={ROUTES.CALCULATOR}>
+                            <Calculator
+                                phrases={phrases}
+                            />
+                        </Route>
+                    </Switch>
+                </Grid>
             </Grid>
-        </Grid>
+        </Router>
     );
 };
 
-export default Content;
+export default Main;

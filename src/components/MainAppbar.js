@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+
 import {
     AppBar,
     Toolbar,
@@ -15,12 +18,16 @@ import {
     Select,
     MenuItem
 } from '@material-ui/core';
+
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import KeyboardIcon from '@material-ui/icons/Keyboard';
+import HomeIcon from '@material-ui/icons/Home';
+
+import { ROUTES } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -67,11 +74,16 @@ export default function MainAppbar({ changeTheme, theme, phrases, language, chan
             onKeyDown={toggleDrawer}
         >
             <List>
-                <ListItem button key={phrases.calculator}>
+                <ListItem component={Link} to={ROUTES.CALCULATOR} button key={phrases.calculator}>
+                    <ListItemIcon><HomeIcon /></ListItemIcon>
+                    <ListItemText primary={phrases.home} />
+                </ListItem>
+                <Divider />
+                <ListItem component={Link} to={ROUTES.CALCULATOR} button key={phrases.calculator}>
                     <ListItemIcon><KeyboardIcon /></ListItemIcon>
                     <ListItemText primary={phrases.calculator} />
                 </ListItem>
-                <ListItem button key={phrases.blog}>
+                <ListItem component={Link} to={ROUTES.BLOG} button key={phrases.blog}>
                     <ListItemIcon><AnnouncementIcon /></ListItemIcon>
                     <ListItemText primary={phrases.blog} />
                 </ListItem>
