@@ -16,6 +16,7 @@ const usePhrases = (lang = 'bh') => {
         switch (_lang) {
             default:
             case 'bh': setPhrases({
+                home: 'Pocetna',
                 taxCalculator: 'Kalkulator Poreza',
                 calculate: 'Izracunaj',
                 gross: 'Bruto',
@@ -32,6 +33,7 @@ const usePhrases = (lang = 'bh') => {
                 blog: 'Blog',
             }); break;
             case 'en': setPhrases({
+                home: 'Home',
                 taxCalculator: 'Tax Calculator',
                 calculate: 'Calculate',
                 gross: 'Gross',
